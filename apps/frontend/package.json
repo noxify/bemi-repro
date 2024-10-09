@@ -9,6 +9,7 @@
     "clean:cache": "git clean -xdf .cache",
     "dev": "pnpm with-env next dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
+    "info": "pnpm with-env next info",
     "lint": "eslint .",
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
