@@ -1,16 +1,22 @@
-import { withPgAdapter } from "@bemi-db/prisma"
+import { PrismaPg } from "@prisma/adapter-pg"
 import { PrismaClient } from "@prisma/client"
+import { Pool } from "pg"
 
 import { env } from "./env"
 
 const createPrismaClient = () => {
   const connectionString = `${env.RDS_ENGINE}://${env.RDS_USERNAME}:${env.RDS_PASSWORD}@${env.RDS_HOST}:${env.RDS_PORT}/${env.RDS_DBNAME}`
 
+  const pool = new Pool({ connectionString })
+  const adapter = new PrismaPg(pool)
+
   const client = new PrismaClient({
-    datasourceUrl: connectionString,
+    adapter,
   })
 
-  return withPgAdapter(client)
+  return client
+
+  //  return withPgAdapter(client)
 }
 
 const globalForPrisma = globalThis as unknown as {

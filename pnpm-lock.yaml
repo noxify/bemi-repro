@@ -197,6 +197,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@bemi-db/prisma':
+        specifier: 0.5.0
+        version: 0.5.0(@prisma/client@5.20.0(prisma@5.20.0))
       '@pothos/plugin-prisma':
         specifier: 4.2.1
         version: 4.2.1(@pothos/core@4.3.0(graphql@16.9.0))(@prisma/client@5.20.0(prisma@5.20.0))(graphql@16.9.0)(typescript@5.6.3)
@@ -690,6 +693,12 @@ packages:
   '@babel/types@7.25.7':
     resolution: {integrity: sha512-vwIVdXG+j+FOpkwqHRcBgHLYNL7XMkufrlaFvL9o6Ai9sJn9+PdyIL5qa0XzTZw084c+u9LOls53eoZWP/W5WQ==}
     engines: {node: '>=6.9.0'}
+
+  '@bemi-db/prisma@0.5.0':
+    resolution: {integrity: sha512-uAmfbe1M/LCtBzzDg8/eBtiipDyL/o3L3yKohTOau95HFPRLk4d30cds5V5a1LI6zijrJl7iTjcrMtbh8INj4Q==}
+    hasBin: true
+    peerDependencies:
+      '@prisma/client': ^5.15.0
 
   '@bundled-es-modules/cookie@2.0.0':
     resolution: {integrity: sha512-Or6YHg/kamKHpxULAdSqhGqnWFneIXu1NKvvfBBzKGwpVsYuFIQ5aBPHDnnoR3ghW1nvSkALd+EF9iMtY7Vjxw==}
@@ -1538,11 +1547,17 @@ packages:
       prisma:
         optional: true
 
+  '@prisma/debug@5.15.1':
+    resolution: {integrity: sha512-NQjdEplhXEcPvf84ghxExC+LD+iTimbg3sZvA3BhybVQIocBEBxFf9GTHhmRVPmjrWoBaYJBVgEEBXZT27JTbQ==}
+
   '@prisma/debug@5.17.0':
     resolution: {integrity: sha512-l7+AteR3P8FXiYyo496zkuoiJ5r9jLQEdUuxIxNCN1ud8rdbH3GTxm+f+dCyaSv9l9WY+29L9czaVRXz9mULfg==}
 
   '@prisma/debug@5.20.0':
     resolution: {integrity: sha512-oCx79MJ4HSujokA8S1g0xgZUGybD4SyIOydoHMngFYiwEwYDQ5tBQkK5XoEHuwOYDKUOKRn/J0MEymckc4IgsQ==}
+
+  '@prisma/driver-adapter-utils@5.15.1':
+    resolution: {integrity: sha512-nMqqE0PSkyoIwcT2kSOcRTq9nsjzsRGWFc3ZA9sgCkBxZ6UpTpzNOVsAbFVJLSO9Q+AjUmCfHoKhUM53n9xsCg==}
 
   '@prisma/driver-adapter-utils@5.20.0':
     resolution: {integrity: sha512-xORRckszVdB8pgh8jcCsEdAniknu2RLzpHmjPQwFHoacMDF44JcbUbtNijFPiZMWRCeLxd1QZkhxgWn2xJB1tQ==}
@@ -5928,6 +5943,17 @@ snapshots:
       '@babel/helper-validator-identifier': 7.25.7
       to-fast-properties: 2.0.0
 
+  '@bemi-db/prisma@0.5.0(@prisma/client@5.20.0(prisma@5.20.0))':
+    dependencies:
+      '@prisma/client': 5.20.0(prisma@5.20.0)
+      '@prisma/driver-adapter-utils': 5.15.1
+      commander: 11.1.0
+      kleur: 4.1.5
+      pg: 8.13.0
+      postgres-array: 3.0.2
+    transitivePeerDependencies:
+      - pg-native
+
   '@bundled-es-modules/cookie@2.0.0':
     dependencies:
       cookie: 1.0.0
@@ -6649,9 +6675,15 @@ snapshots:
     optionalDependencies:
       prisma: 5.20.0
 
+  '@prisma/debug@5.15.1': {}
+
   '@prisma/debug@5.17.0': {}
 
   '@prisma/debug@5.20.0': {}
+
+  '@prisma/driver-adapter-utils@5.15.1':
+    dependencies:
+      '@prisma/debug': 5.15.1
 
   '@prisma/driver-adapter-utils@5.20.0':
     dependencies:
