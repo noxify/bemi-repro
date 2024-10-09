@@ -48,8 +48,10 @@
   "prettier": "@acme/prettier-config",
   "dependencies": {
     "@pothos/plugin-prisma": "4.2.1",
+    "@prisma/adapter-pg": "5.20.0",
     "@prisma/client": "5.20.0",
     "@t3-oss/env-core": "0.11.1",
+    "pg": "8.13.0",
     "zod": "3.23.8"
   },
   "devDependencies": {
@@ -59,6 +61,7 @@
     "@faker-js/faker": "9.0.3",
     "@prisma/generator-helper": "5.20.0",
     "@types/node": "22.7.5",
+    "@types/pg": "8.11.10",
     "dotenv-cli": "7.4.2",
     "eslint": "9.12.0",
     "globby": "14.0.2",

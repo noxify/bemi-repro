@@ -1,6 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "nativeDistinct", "relationJoins", "omitApi"]
+  previewFeatures = ["fullTextSearch", "nativeDistinct", "relationJoins", "omitApi", "multiSchema", "driverAdapters"]
 }
 
 generator enums {
@@ -19,12 +19,14 @@ generator types {
 datasource db {
   provider = "postgresql"
   url      = env("RDS_URL")
+  schemas = ["public", "bemi"]
 }
 
 enum UserRole {
   user
   admin
   unauthorized
+  @@schema("public")
 }
 
 
@@ -37,6 +39,7 @@ model User {
   accounts                       OAuthAccount[]
  
   @@map("user")
+  @@schema("public")
 }
 
 model Session {
@@ -48,6 +51,7 @@ model Session {
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 
   @@map("session")
+  @@schema("public")
 }
 
 model OAuthAccount {
@@ -58,5 +62,6 @@ model OAuthAccount {
 
   @@id([providerId, providerUserId])
   @@map("oauth_account")
+  @@schema("public")
 }
 
