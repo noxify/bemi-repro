@@ -1,0 +1,12 @@
+{
+  "name": "mock-server",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "oauth2-mock-server",
+    "dev": "oauth2-mock-server"
+  },
+  "private": true,
+  "dependencies": {
+    "oauth2-mock-server": "7.1.2"
+  }
+}

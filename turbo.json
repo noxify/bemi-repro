@@ -1,0 +1,72 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".expo/**",
+        ".output/**",
+        ".vercel/output/**",
+        ".cache/tsbuildinfo.json",
+        "dist/**"
+      ]
+    },
+    "dev": {
+      "persistent": false,
+      "cache": false
+    },
+    "start": {
+      "persistent": false,
+      "cache": false
+    },
+    "format": {
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "outputs": [".cache/.eslintcache"]
+    },
+    "typecheck": {
+      "outputs": [".cache/tsbuildinfo.json"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "clean:cache": {
+      "cache": false
+    },
+    "push": {
+      "cache": false,
+      "interactive": true
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "ui-add": {
+      "cache": false,
+      "interactive": true
+    }
+  },
+  "globalEnv": [
+    "APPLICATION_URL",
+    "NEXT_TELEMETRY_DISABLED",
+    "RDS_ENGINE",
+    "RDS_HOST",
+    "RDS_PORT",
+    "RDS_USERNAME",
+    "RDS_PASSWORD",
+    "RDS_DBNAME",
+    "RDS_DEBUG",
+    "LOG_LEVEL",
+    "PORT"
+  ],
+  "globalPassThroughEnv": ["NODE_ENV", "CI", "npm_lifecycle_event"]
+}

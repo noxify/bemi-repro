@@ -1,0 +1,1 @@
+- shadcn styling for the react querybuilder is based on https://github.com/jide/react-querybuilder-shadcn-ui

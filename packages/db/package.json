@@ -1,0 +1,72 @@
+{
+  "name": "@acme/db",
+  "version": "2.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./enums": {
+      "types": "./src/enums.ts",
+      "default": "./src/enums.ts"
+    },
+    "./enums-client": {
+      "types": "./src/enums-client.ts",
+      "default": "./src/enums-client.ts"
+    },
+    "./types": {
+      "types": "./src/types.ts",
+      "default": "./src/types.ts"
+    },
+    "./env": {
+      "types": "./src/env.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean:cache": "git clean -xdf .cache",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "generate": "prisma generate",
+    "lint": "eslint .",
+    "migrate:create": "pnpm with-env prisma migrate dev -- --name migration --create-only",
+    "migrate:deploy": "pnpm with-env prisma migrate deploy",
+    "migrate:dev": "pnpm with-env prisma migrate dev",
+    "migrate:reset": "pnpm with-env prisma migrate reset -- --force --skip-seed",
+    "prisma:format": "prisma format",
+    "prisma:validate": "pnpm with-env prisma validate",
+    "pull": "pnpm with-env prisma db pull",
+    "push": "pnpm with-env prisma db push",
+    "seed": "pnpm with-env prisma db seed",
+    "studio": "pnpm with-env prisma studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env"
+  },
+  "prettier": "@acme/prettier-config",
+  "dependencies": {
+    "@pothos/plugin-prisma": "4.2.1",
+    "@prisma/client": "5.20.0",
+    "@t3-oss/env-core": "0.11.1",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "@faker-js/faker": "9.0.3",
+    "@prisma/generator-helper": "5.20.0",
+    "@types/node": "22.7.5",
+    "dotenv-cli": "7.4.2",
+    "eslint": "9.12.0",
+    "globby": "14.0.2",
+    "prettier": "3.3.3",
+    "prisma": "5.20.0",
+    "prismock": "1.33.3",
+    "tsx": "4.19.1",
+    "typescript": "5.6.3",
+    "vitest": "2.1.2"
+  }
+}

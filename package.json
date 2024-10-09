@@ -1,0 +1,61 @@
+{
+  "name": "bemi_repro",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "turbo run build",
+    "preview": "turbo run start -F frontend...",
+    "dev": "turbo watch dev",
+    "dev:frontend": "turbo watch dev -F frontend...",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "clean:cache": "turbo run clean:cache",
+    "clean:dist": "turbo run clean:dist",
+    "db:generate": "pnpm -F db generate",
+    "db:migrate:create": "pnpm -F db migrate:create",
+    "db:migrate:dev": "pnpm -F db migrate:dev",
+    "db:migrate:deploy": "pnpm -F db migrate:deploy",
+    "db:migrate:reset": "pnpm -F db migrate:reset",
+    "db:push": "pnpm -F @acme/db push",
+    "db:seed": "pnpm -F @acme/db seed",
+    "db:studio": "pnpm -F @acme/db studio",
+    "typecheck": "turbo run typecheck",
+    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:ws": "sherif",
+    "lint:ws:fix": "sherif --fix",
+    "ui-add": "turbo run ui-add",
+    "deps:check": "pnpm outdated -r",
+    "deps:update": "pnpm update -i -L -r",
+    "lang:gen": "pnpm -F locales generate",
+    "postinstall": "pnpm lint:ws",
+    "prune": "turbo prune --docker",
+    "turbo:ls": "turbo ls"
+  },
+  "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "@turbo/gen": "2.1.3",
+    "changesets-gitlab": "0.12.1",
+    "husky": "9.1.6",
+    "prettier": "3.3.3",
+    "sherif": "1.0.0",
+    "tailwindcss": "3.4.13",
+    "turbo": "2.1.3",
+    "typescript": "5.6.3"
+  },
+  "prettier": "@acme/prettier-config",
+  "pnpm": {
+    "overrides": {
+      "minimist@<0.2.1": ">=0.2.1",
+      "minimist@<0.2.4": ">=0.2.4",
+      "axios@<0.28.0": ">=0.28.0",
+      "cookie@<0.7.0": ">=0.7.0",
+      "dset@<3.1.4": ">=3.1.4"
+    }
+  }
+}

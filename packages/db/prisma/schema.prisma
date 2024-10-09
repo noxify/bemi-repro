@@ -1,0 +1,62 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "nativeDistinct", "relationJoins", "omitApi"]
+}
+
+generator enums {
+  provider = "node --import tsx/esm ./src/enum-generator.ts"
+}
+
+generator enums_client {
+  provider = "node --import tsx/esm ./src/enum-client-generator.ts"
+}
+
+generator types {
+  provider = "node --import tsx/esm ./src/type-generator.ts"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("RDS_URL")
+}
+
+enum UserRole {
+  user
+  admin
+  unauthorized
+}
+
+
+model User {
+  id                             String                   @id
+  name                           String
+  email                          String                   @unique
+  role                           UserRole                 @default(user)
+  sessions                       Session[]
+  accounts                       OAuthAccount[]
+ 
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model OAuthAccount {
+  providerId     String
+  providerUserId String
+  userId         String
+  user           User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@id([providerId, providerUserId])
+  @@map("oauth_account")
+}
+
