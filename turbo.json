@@ -66,6 +66,7 @@
     "RDS_DBNAME",
     "RDS_DEBUG",
     "LOG_LEVEL",
+    "BEMI_DEBUG",
     "PORT"
   ],
   "globalPassThroughEnv": ["NODE_ENV", "CI", "npm_lifecycle_event"]

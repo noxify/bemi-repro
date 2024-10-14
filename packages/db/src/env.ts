@@ -14,6 +14,7 @@ export const env = createEnv({
       .string()
       .transform((val) => val === "true")
       .default("false"),
+    BEMI_DEBUG: z.coerce.boolean().default(false),
   },
   runtimeEnv: process.env,
   skipValidation:
